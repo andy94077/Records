@@ -1,0 +1,25 @@
+if [ "$TERM" == "xterm-256color" ]; then
+	export PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[38;5;38m\]\w\[\e[0m\]\[\e[38;5;214m\]`__git_ps1`\[\e[0m\]\n\$ '
+else
+	export PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[33m\]\w\[\e[0m\]\[\e[36m\]`__git_ps1`\[\e[0m\]\n\$ '
+fi
+alias rm='rm -i'
+alias grep='grep --color=auto'
+alias mv='mv -i'
+alias cls='clear'
+alias cp='cp -i'
+alias ls='ls --color -F'
+alias ll='ls --color -AlF'
+alias up='/c/Users/Andy/upload.sh'
+alias statistics='/c/Users/Andy/statistics.sh'
+alias sshcs='$(/c/Users/Andy/sshcs.sh)'
+alias pg='ping www.google.com -n -1'
+alias ssharch='ssh andy@192.168.74.131'
+
+alias gcc64='"/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gcc.exe"'
+alias g++64='"/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/g++.exe"'
+alias gdb64='"/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gdb.exe"'
+
+alias todesk='cd /d/Andy/Desktop'
+alias torepo='cd "D:\Andy\Google Drive\SystemProgramming\SP18-B06902001"' 
+for ((i=1;i<=15;i++)); do alias sshcs$i='ssh b06902001@linux'$i'.csie.org';done
