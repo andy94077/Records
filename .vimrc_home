@@ -1,0 +1,165 @@
+" Settings for Vundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'skielbasa/vim-material-monokai'
+"Plugin 'Valloric/YouCompleteMe'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"------------------------- my settings---------------------------------
+set t_Co=256
+set termguicolors
+set tabstop=4
+set smartindent
+set shiftwidth=4
+set number relativenumber
+colorscheme material-monokai
+"map <F5> <ESC>:w<CR>:!gcc -o %< -g -Wall -std=c99 %<CR>:!./%<<CR> 
+"inoremap <F5> <ESC>:w<CR>:!gcc -o %< -g -Wall -std=c99 %<CR>:!./%<<CR> 
+inoremap ( ()<LEFT>
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+let e = expand("%:e")
+if e == "c" || e == "cpp" || e == "py"
+	inoremap ;; <End>;<LF>
+"	inoremap ` ~
+"	inoremap ~ `
+"	inoremap 1 !
+"	inoremap ! 1
+"	inoremap 2 @
+"	inoremap @ 2
+"	inoremap 3 #
+"	inoremap # 3
+"	inoremap 4 ()<LEFT>
+"	inoremap $ 4
+"	inoremap 5 %
+"	inoremap % 5
+"	inoremap 6 )
+"	inoremap ^ 6
+"	inoremap 7 &
+"	inoremap & 7
+"	inoremap 8 *
+"	inoremap * 8
+"	inoremap 9 ^
+"	inoremap ( 9
+"	inoremap ) $
+endif
+
+command! COMPILE call s:COMPILE()
+nnoremap <F5> <ESC>:w<CR>:COMPILE<CR>
+inoremap <F5> <ESC>:w<CR>:COMPILE<CR>
+function! s:COMPILE()
+    let e = expand("%:e")
+    if e == "c"
+        :call s:Gcc()
+    endif
+    if e == "py"
+        :call s:Python()
+    endif
+    if e == "cpp"
+        :call s:Cpp()
+    endif
+endfunction
+
+function! s:Python()
+    :!python %
+endfunction
+
+function! s:Gcc()
+    :!gcc % -o %< -g -Wall -std=c99
+    :!./%<.exe
+endfunction
+
+function! s:Cpp()
+    :!g++ % -o %< -g -Wall -std=c++11
+    :!./%<.exe
+endfunction
+"my settings are above this line---------------------------------------
+
+set ai                          " set auto-indenting on for programming
+set showmatch                   " automatically show matching brackets. works like it does in bbedit.
+set vb                          " turn on the "visual bell" - which is much quieter than the "audio blink"
+set ruler                       " show the cursor position all the time
+set laststatus=2                " make the last line where the status is two lines deep so you can see status always
+set backspace=indent,eol,start  " make that backspace key work the way it should
+set nocompatible                " vi compatible is LAME
+set background=dark             " Use colours that work well on a dark background (Console is usually black)
+set showmode                    " show the current mode
+set clipboard=unnamed           " set clipboard to unnamed to access the system clipboard under windows
+syntax on                       " turn syntax highlighting on by default
+
+" Show EOL type and last modified timestamp, right after the filename
+set statusline=%<%F%h%m%r\ [%{&ff}]\ (%{strftime(\"%H:%M\ %d/%m/%Y\",getftime(expand(\"%:p\")))})%=%l,%c%V\ %P
+
+"------------------------------------------------------------------------------
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+    "Set UTF-8 as the default encoding for commit messages
+    autocmd BufReadPre COMMIT_EDITMSG,MERGE_MSG,git-rebase-todo setlocal fileencodings=utf-8
+
+    "Remember the positions in files with some git-specific exceptions"
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$")
+      \           && expand("%") !~ "COMMIT_EDITMSG"
+      \           && expand("%") !~ "MERGE_EDITMSG"
+      \           && expand("%") !~ "ADD_EDIT.patch"
+      \           && expand("%") !~ "addp-hunk-edit.diff"
+      \           && expand("%") !~ "git-rebase-todo" |
+      \   exe "normal g`\"" |
+      \ endif
+
+      autocmd BufNewFile,BufRead *.patch set filetype=diff
+      autocmd BufNewFile,BufRead *.diff set filetype=diff
+
+      autocmd Syntax diff
+      \ highlight WhiteSpaceEOL ctermbg=red |
+      \ match WhiteSpaceEOL /\(^+.*\)\@<=\s\+$/
+
+      autocmd Syntax gitcommit setlocal textwidth=74
+endif " has("autocmd")
+
+hi Normal guibg=#1b1b1b
+hi Comment guifg=#20c100
+
