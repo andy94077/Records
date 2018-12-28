@@ -1,0 +1,59 @@
+# This file should contain aliases, shell variables, and functios,
+# those cannot be passed to child process.
+#
+# Ref to .profile for details
+#
+for ((i=1;i<=15;i++)); do alias sshcs$i="ssh b06902001@linux$i.csie.org";done
+alias ll='ls -AlF --color=always'
+alias dos2unix='fromdos'
+## Standard Aliases
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+alias dir='ls -lg|more'
+alias vi='vim'
+alias cls='clear'
+alias telnet='telnet -8'
+alias cdtmp='cd /tmp2/b06902001'
+os=${OSTYPE/[^a-z]*/}
+
+case "$os" in
+"freebsd")
+	alias ls='ls -FG'
+	export LSCOLORS='ExGxFxdxCxDxDxhbadacad'
+	;;
+"linux")
+	alias ls='ls --color -F'
+	;;
+"solaris")
+	alias ls='ls --color --show-control-chars -F'
+	alias ping="ping -s"
+	;;
+esac
+
+## Extra aliases
+#
+alias grep=egrep
+alias talk=ytalk
+
+parse_git_branch() {
+	    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+## Shell style
+#
+if [ $SHELL = "/bin/sh" ]; then
+  if [ "$WINDOW" != "" ]; then
+    export PS1="$LOGNAME@`hostname` [W$WINDOW] "
+  else 
+    export PS1="$LOGNAME@`hostname`$ "
+  fi
+else 
+  if [ "$WINDOW" != "" ]; then
+    export PS1="$LOGNAME@\h {\w} [W$WINDOW] "
+  else
+	export PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[38;5;38m\]\w\[\e[0m\]\[\e[38;5;214m\]$(parse_git_branch)\[\e[0m\]\$ '
+  fi
+fi
+
+#PeiPei version
+#export PS1="\[\033[38;5;32m\]\u\[\033[38;5;251m\]@\[\033[38;5;35m\]\h\[\033[38;5;251m\]: \[\033[38;5;184m\]\W\[\033[38;5;214m\]\$(parse_git_branch)\[\033[38;5;251m\]$ \[\033[0m\]"
