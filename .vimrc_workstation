@@ -15,7 +15,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'skielbasa/vim-material-monokai'
-
+Plugin 'Valloric/vim-operator-highlight'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -33,13 +33,14 @@ filetype plugin indent on    " required
 " Setting some decent VIM settings for programming
 ""highlight Pmenu ctermfg=White ctermbg=Magenta
 
+let g:ycm_global_ycm_extra_conf = "$HOME/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf = 1
 let g:ycm_python_interpreter_path = ''
 let g:ycm_python_sys_path = []
 let g:ycm_extra_conf_vim_data = [
   \  'g:ycm_python_interpreter_path',
   \  'g:ycm_python_sys_path'
   \]
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
@@ -51,6 +52,8 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 
+let g:ophigh_color_gui ="#fc3488"
+
 set t_Co=256
 set termguicolors
 set tabstop=4
@@ -58,15 +61,22 @@ set smartindent
 set shiftwidth=4
 set number relativenumber
 colorscheme material-monokai
+set hlsearch
 
 "za: fold/unfold lines, zM: fold all, zR: unfold all
 set foldenable
 set foldmethod=syntax
 inoremap ( ()<Left>
 inoremap [ []<Left>
+inoremap { {}<Left>
 inoremap ' ''<Left>
 inoremap " ""<Left>
 inoremap ;; <End>;<LF>
+
+let e = expand("%:e")
+if e == "c" || e == "cpp"
+	inoremap # #include <><LEFT>
+endif
 
 "map <F5> <ESC>:w<CR>:!gcc -o %< -g -Wall -std=c99 %<CR>:!./%<<CR>
 "----------------------------my settings are above this line---------------------------------------
@@ -173,7 +183,7 @@ function! s:Python()
 endfunction
 
 function! s:Gcc()
-	:!gcc % -o %< -g -Wall -Wextra -std=c99 && ./%<
+	:!gcc % -o %< -g -Wall -Wextra && ./%<
 endfunction
 
 function! s:Cpp()
@@ -188,4 +198,5 @@ set mouse=
 hi Normal guibg=#1b1b1b
 hi Comment guifg=#20c100
 highlight Pmenusel guifg=#00a2e8 guibg=#eeeeee
-
+"syntax match OperatorChars "?\|+\|-\|\*\|;\|:\|,\|<\|>\|&\||\|!\|\~\|%\|=\|)\|(\|{\|}\|\.\|\[\|\]\|/\(/\|*\)\@!"
+"hi OperatorChars guifg=#fc3488
