@@ -159,6 +159,8 @@ au BufRead /tmp/crontab* :set backupcopy=yes
 
 inoremap <F7> <Esc>:w<CR>:!make<CR>
 nnoremap <F7> <Esc>:w<CR>:!make<CR>
+inoremap <F6> <Esc>:w<CR>:!make %<<CR>
+nnoremap <F6> <Esc>:w<CR>:!make %<<CR>
 command! COMPILE call s:COMPILE()
 nnoremap <F5> <ESC>:w<CR>:COMPILE<CR>
 inoremap <F5> <ESC>:w<CR>:COMPILE<CR>
@@ -179,7 +181,7 @@ function! s:COMPILE()
 endfunction
 
 function! s:Python()
-	:!python %
+	:!python3 %
 endfunction
 
 function! s:Gcc()
@@ -198,5 +200,3 @@ set mouse=
 hi Normal guibg=#1b1b1b
 hi Comment guifg=#20c100
 highlight Pmenusel guifg=#00a2e8 guibg=#eeeeee
-"syntax match OperatorChars "?\|+\|-\|\*\|;\|:\|,\|<\|>\|&\||\|!\|\~\|%\|=\|)\|(\|{\|}\|\.\|\[\|\]\|/\(/\|*\)\@!"
-"hi OperatorChars guifg=#fc3488
