@@ -15,7 +15,7 @@
 	br = branch
 	ci = commit
 	cm = commit -m
-	ca = !git add -A && git commit -m
+	ac = !git add -A && git commit -m
 	st = status
 	tree = log --graph --oneline 
 	lg = log --graph --abbrev-commit --format=format:'%C(yellow)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
