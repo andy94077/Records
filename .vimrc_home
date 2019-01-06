@@ -30,6 +30,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'skielbasa/vim-material-monokai'
+Plugin 'Valloric/vim-operator-highlight'
 "Plugin 'Valloric/YouCompleteMe'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -108,12 +109,12 @@ function! s:Python()
 endfunction
 
 function! s:Gcc()
-    :!gcc % -o %< -g -Wall -std=c99
+    :!gcc % -o %< -g -Wall -Wextra -std=c99
     :!./%<.exe
 endfunction
 
 function! s:Cpp()
-    :!g++ % -o %< -g -Wall -std=c++11
+    :!g++ % -o %< -g -Wall -Wextra -std=c++17
     :!./%<.exe
 endfunction
 "my settings are above this line---------------------------------------
