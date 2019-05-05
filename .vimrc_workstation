@@ -16,6 +16,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'skielbasa/vim-material-monokai'
 Plugin 'Valloric/vim-operator-highlight'
+Plugin 'vim-scripts/vim-auto-save'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -53,6 +54,8 @@ let g:cpp_concepts_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 
 let g:ophigh_color_gui ="#fc3488"
+
+let g:auto_save = 1
 
 set t_Co=256
 set termguicolors
@@ -200,3 +203,4 @@ set mouse=
 hi Normal guibg=#1b1b1b
 hi Comment guifg=#20c100
 highlight Pmenusel guifg=#00a2e8 guibg=#eeeeee
+
