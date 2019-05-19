@@ -55,6 +55,7 @@ set smartindent
 set shiftwidth=4
 set number relativenumber
 colorscheme material-monokai
+set mouse=a
 "map <F5> <ESC>:w<CR>:!gcc -o %< -g -Wall -std=c99 %<CR>:!./%<<CR> 
 "inoremap <F5> <ESC>:w<CR>:!gcc -o %< -g -Wall -std=c99 %<CR>:!./%<<CR> 
 inoremap ( ()<LEFT>
