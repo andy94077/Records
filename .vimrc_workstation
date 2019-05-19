@@ -65,6 +65,7 @@ set shiftwidth=4
 set number relativenumber
 colorscheme material-monokai
 set hlsearch
+set noexpandtab
 
 "za: fold/unfold lines, zM: fold all, zR: unfold all
 set foldenable
@@ -167,6 +168,7 @@ nnoremap <F6> <Esc>:w<CR>:!make %<<CR>
 command! COMPILE call s:COMPILE()
 nnoremap <F5> <ESC>:w<CR>:COMPILE<CR>
 inoremap <F5> <ESC>:w<CR>:COMPILE<CR>
+nnoremap <F2> <ESC>:set tabstop=4<CR>:set noexpandtab<CR>:%retab!<CR>
 function! s:COMPILE()
 	let e = expand("%:e")
 	if e == "c"
@@ -199,7 +201,7 @@ function! s:Shell()
 	:!bash %
 endfunction
 
-set mouse=
+set mouse=a
 hi Normal guibg=#1b1b1b
 hi Comment guifg=#20c100
 highlight Pmenusel guifg=#00a2e8 guibg=#eeeeee
