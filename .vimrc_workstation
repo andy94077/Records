@@ -46,7 +46,7 @@ let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
-let g:ycm_filetype_whitelist = {"c":1, "cpp":1, "py":1, "vimrc":1, "bashrc":1, "sh":1}
+let g:ycm_filetype_whitelist = {"c":1, "cpp":1, "python":1, "vimrc":1, "bashrc":1, "sh":1}
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
