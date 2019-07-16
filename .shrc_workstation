@@ -6,6 +6,7 @@
 for ((i=1;i<=15;i++)); do alias sshcs$i="ssh b06902001@linux$i.csie.org";done
 alias ll='ls -AlF --color=always'
 alias dos2unix='fromdos'
+alias less='less -r'
 ## Standard Aliases
 alias mv='mv -i'
 alias cp='cp -i'
@@ -15,6 +16,8 @@ alias vi='vim'
 alias cls='clear'
 alias telnet='telnet -8'
 alias cdtmp='cd /tmp2/b06902001'
+alias view_storage='du -h --max-depth=1 | sort -rhk 1'
+export CUDA_VISIBLE_DEVICES=''
 os=${OSTYPE/[^a-z]*/}
 
 case "$os" in
