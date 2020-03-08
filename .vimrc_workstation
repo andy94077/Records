@@ -9,8 +9,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'zxqfl/tabnine-vim'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'zxqfl/tabnine-vim'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'vim-airline/vim-airline'
@@ -47,7 +47,7 @@ let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
-let g:ycm_filetype_whitelist = {"c":1, "cpp":1, "python":1, "vimrc":1, "bashrc":1, "sh":1}
+let g:ycm_filetype_whitelist = {"c":1, "cpp":1, "python":1, "vimrc":1, "bashrc":1, "sh":1, "php":1}
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -87,7 +87,7 @@ inoremap <C-l> <C-o>w
 inoremap <C-h> <C-o>b
 
 let e = expand("%:e")
-if e == "c" || e == "cpp"
+if (e == "c" || e == "cpp")
 	inoremap # #include <><LEFT>
 endif
 
@@ -113,8 +113,8 @@ syntax on
 
 set nocompatible
 set wildmenu
-set backupdir=~/tmp,~/.vim/backup,.,/var/tmp/vi.recover,/tmp
-set directory=~/tmp,~/.vim/swap,/var/tmp/vi.recover,/tmp,.
+set backupdir=~/.vim/backup,~/tmp,.,/var/tmp/vi.recover,/tmp
+set directory=~/.vim/swap,~/tmp,/var/tmp/vi.recover,/tmp,.
 set undodir=~/tmp,~/.vim/undo,/tmp,.
 set backup		" keep a backup file
 " set textwidth=78
@@ -205,7 +205,7 @@ function! s:Shell()
 endfunction
 
 set mouse=a
-hi Normal guibg=#161616
+hi Normal guibg=#1a2226
 hi Comment guifg=#20c100
 highlight Pmenusel guifg=#00a2e8 guibg=#eeeeee
 vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>N
