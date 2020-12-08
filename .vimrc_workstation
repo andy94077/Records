@@ -63,6 +63,7 @@ set termguicolors
 set tabstop=4
 set smartindent
 set shiftwidth=4
+set softtabstop=4
 set number relativenumber
 colorscheme material-monokai
 set hlsearch
