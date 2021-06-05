@@ -63,6 +63,7 @@ inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
+nnoremap <C-D> :q<CR>
 let e = expand("%:e")
 if e == "c" || e == "cpp" || e == "py"
 	inoremap ;; <End>;<LF>
@@ -164,4 +165,4 @@ endif " has("autocmd")
 
 hi Normal guibg=#1b1b1b
 hi Comment guifg=#20c100
-
+hi Operator guifg=#fc3488

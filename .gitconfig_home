@@ -18,6 +18,7 @@
 	ac = !git add -A && git commit -m
 	st = status
 	tree = log --graph --oneline 
+	pu = !git push -u origin $(git branch --show-current)
 	lg = log --graph --abbrev-commit --format=format:'%C(yellow)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
 	lg2 = log --graph --abbrev-commit --format=format:'%C(auto)%h%C(reset) - %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [gui]
@@ -30,7 +31,10 @@
 [pull]
 #	rebase = true
 [winUpdater]
-	recentlySeenVersion = 2.20.1.windows.1
+	recentlySeenVersion = 2.29.0.windows.1
 [core]
 	ui = auto
 	pager = less -r
+	autocrlf = false
+[credential]
+	helper = store
