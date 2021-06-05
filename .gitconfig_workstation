@@ -26,7 +26,7 @@
 	process = git-lfs filter-process
 	required = true
 [pull]
-	#rebase = true
+	rebase = false
 [color]
 	ui = auto
 [core]

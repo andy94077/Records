@@ -3,18 +3,9 @@
 #
 # Ref to .profile for details
 #
-for ((i=1;i<=15;i++)); do alias sshcs$i="ssh b06902001@linux$i.csie.org";done
-alias ll='ls -AlF --color=always'
-alias dos2unix='fromdos'
-## Standard Aliases
-alias mv='mv -i'
-alias cp='cp -i'
-alias rm='rm -i'
-alias dir='ls -lg|more'
-alias vi='vim'
-alias cls='clear'
-alias telnet='telnet -8'
-alias cdtmp='cd /tmp2/b06902001'
+if [ -f "$HOME/.bash_aliases" ]; then
+	. "$HOME/.bash_aliases"
+fi
 os=${OSTYPE/[^a-z]*/}
 
 case "$os" in
@@ -51,7 +42,7 @@ else
   if [ "$WINDOW" != "" ]; then
     export PS1="$LOGNAME@\h {\w} [W$WINDOW] "
   else
-	export PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[38;5;38m\]\w\[\e[0m\]\[\e[38;5;214m\]$(parse_git_branch)\[\e[0m\]\$ '
+	export PS1='\[\e[32m\]\u@\h\[\e[0m\] \[\e[38;5;38m\]\w\[\e[0m\] \[\e[38;2;255;193;251m\]($(date +%T))\[\e[0m\]\[\e[38;5;214m\]$(parse_git_branch)\[\e[0m\]\$ '
   fi
 fi
 
