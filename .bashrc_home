@@ -15,6 +15,8 @@ alias statistics='/c/Users/Andy/statistics.sh'
 alias sshcs='$(/c/Users/Andy/sshcs.sh)'
 alias pg='ping www.google.com -n -1'
 alias ssharch='ssh andy@192.168.74.131'
+alias sshnlp='ssh andy94077@nlp.csie.org'
+for i in {2..5..1}; do alias sshnlp$i='ssh andy94077@nlp'$i'.csie.org'; done
 
 alias gcc64='"/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gcc.exe"'
 alias g++64='"/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/g++.exe"'
@@ -22,4 +24,16 @@ alias gdb64='"/c/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw
 
 alias todesk='cd /d/Andy/Desktop'
 alias torepo='cd "D:\Andy\Google Drive\SystemProgramming\SP18-B06902001"' 
-for ((i=1;i<=15;i++)); do alias sshcs$i='ssh b06902001@linux'$i'.csie.org';done
+for ((i=1;i<=15;i++)); do alias sshcs$i='ssh b06902001@linux'$i'.csie.ntu.edu.tw';done
+for ((i=1;i<=2;i++)); do alias sshme$i='ssh b06902001@meow'$i'.csie.ntu.edu.tw'; done
+for ((i=5;i<=27;i++)); do alias sshcml$i='ssh andy94077@cml'$i'.csie.ntu.edu.tw'; done
+
+gcod(){
+	branch=$(git branch --show-current)
+	if [[ $branch == "master" || $branch == "main" || $branch == "dev" ]]; then
+		echo "You cannot delete the $branch."
+		exit 1
+	fi
+	echo "git checkout dev && git pull && git remote update --prune && git branch -d $branch"
+	git checkout dev && git pull && git remote update --prune && git branch -d $branch
+}
