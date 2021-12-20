@@ -10,5 +10,5 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 wget https://raw.githubusercontent.com/andy94077/Records/master/.zshrc_workstation -O ~/.zshrc
-wget https://raw.githubusercontent.com/andy94077/Records/master/saiko.zsh-theme -O ~/.oh-my-zsh/custom/themes
+wget https://raw.githubusercontent.com/andy94077/Records/master/saiko.zsh-theme -O ~/.oh-my-zsh/custom/themes/saiko.zsh-theme
 zsh ~/.zshrc
