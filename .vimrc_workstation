@@ -9,7 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'zxqfl/tabnine-vim'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -72,6 +72,7 @@ set noexpandtab
 "za: fold/unfold lines, zM: fold all, zR: unfold all
 set foldenable
 set foldmethod=syntax
+
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
