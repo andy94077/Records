@@ -9,6 +9,6 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-cp ~b06902001/.zshrc ~/.zshrc
-cp ~b06902001/.oh-my-zsh/custom/themes/saiko.zsh-theme ~/.oh-my-zsh/custom/themes
+wget https://raw.githubusercontent.com/andy94077/Records/master/.zshrc_workstation -o ~/.zshrc
+wget https://raw.githubusercontent.com/andy94077/Records/master/saiko.zsh-theme -o ~/.oh-my-zsh/custom/themes
 zsh ~/.zshrc
